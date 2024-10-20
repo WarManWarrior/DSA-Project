@@ -97,7 +97,7 @@
         }
 
         /* Button Styling */
-        a {
+        .visual {
             background-color: #3498db;
             color: #fff;
             text-decoration: none;
@@ -108,7 +108,7 @@
             transition: background-color 0.3s ease;
         }
 
-        a:hover {
+        .visual:hover {
             background-color: #2980b9;
         }
 
@@ -136,6 +136,7 @@
         }
     </style>
 </head>
+<%- include("../navbar.ejs") %>
 <body>
     <div class="cont">
         <h1>Singly Linked List</h1>
@@ -192,7 +193,7 @@
             <script src="styles/linked_list/js/seditor.js"></script>
         </div>
         <div style="width: 100%;display: flex;justify-content: center;align-items: center;margin: 20px;">
-            <a href="/linkedlist">Visualization</a>
+            <a href="/linkedlist" class="visual">Visualization</a>
         </div>
     </div>
 

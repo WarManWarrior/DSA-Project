@@ -97,7 +97,7 @@
         }
 
         /* Button Styling */
-        a {
+        .visual {
             background-color: #3498db;
             color: #fff;
             text-decoration: none;
@@ -108,7 +108,7 @@
             transition: background-color 0.3s ease;
         }
 
-        a:hover {
+        .visual:hover {
             background-color: #2980b9;
         }
 
@@ -136,7 +136,8 @@
         }
     </style>
 </head>
-<body class="cont">
+<%- include("../navbar.ejs") %>
+<body class="cont" style="margin-top: 40px;">
 
     <h1>Stack in Data Structures and Algorithms (DSA)</h1>
 
@@ -207,7 +208,7 @@
         <script src="styles/stack/js/editor.js"></script>
     </div>
     <div style="width: 100%;display: flex;justify-content: center;align-items: center;margin: 20px;">
-        <a href="/stack">Visualization</a>
+        <a href="/stack" class="visual">Visualization</a>
 
 </body>
 </html>

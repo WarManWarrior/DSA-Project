@@ -97,7 +97,7 @@
         }
 
         /* Button Styling */
-        a {
+        .visual {
             background-color: #3498db;
             color: #fff;
             text-decoration: none;
@@ -108,7 +108,7 @@
             transition: background-color 0.3s ease;
         }
 
-        a:hover {
+        .visual:hover {
             background-color: #2980b9;
         }
 
@@ -134,7 +134,33 @@
                 margin: 10px;
             }
         }
+
+        .header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            height: 40px;
+            margin-left: 20px;
+        }
+        .nav {
+            float: right;
+            margin-right: 20px;
+            padding-top: 10px;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            
+        }
     </style>
+<%- include("../navbar.ejs") %>
 </head>
 <body class="cont">
 
@@ -231,7 +257,7 @@
 </div>
 
 <div style="width: 100%;display: flex;justify-content: center;align-items: center;margin: 20px;">
-    <a href="/matrix">Visualization</a>
+    <a class="visual" href="/matrix">Visualization</a>
 </div>
 
 </body>

@@ -97,7 +97,7 @@
         }
 
         /* Button Styling */
-        a {
+        .visual {
             background-color: #3498db;
             color: #fff;
             text-decoration: none;
@@ -108,7 +108,7 @@
             transition: background-color 0.3s ease;
         }
 
-        a:hover {
+        .visual:hover {
             background-color: #2980b9;
         }
 
@@ -136,6 +136,7 @@
         }
     </style>
 </head>
+<%- include("../navbar.ejs") %>
 <body>
     <h1>Circular Linked List</h1>
     <p>A <strong>circular linked list</strong> is a data structure that extends the concept of a linked list by linking the last node back to the first node, forming a circle. Unlike traditional linked lists, which have a <code>null</code> reference at the end, a circular linked list does not have an end point, making it useful for applications that require continuous traversal of the list without the need for resetting to the head. This structure is commonly used in various computing scenarios, including round-robin scheduling, buffering, and game development.</p>
@@ -189,7 +190,7 @@
         <script src="styles/linked_list/js/ceditor.js"></script>
     </div>
     <div style="width: 100%;display: flex;justify-content: center;align-items: center;margin: 20px;">
-        <a href="/linkedlist">Visualization</a>
+        <a href="/linkedlist" class="visual">Visualization</a>
     </div>
 </body>
 </html>

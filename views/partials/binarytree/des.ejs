@@ -97,7 +97,7 @@
         }
 
         /* Button Styling */
-        a {
+        .visual {
             background-color: #3498db;
             color: #fff;
             text-decoration: none;
@@ -108,7 +108,7 @@
             transition: background-color 0.3s ease;
         }
 
-        a:hover {
+        .visual:hover {
             background-color: #2980b9;
         }
 
@@ -136,6 +136,7 @@
         }
     </style>
 </head>
+<%- include("../navbar.ejs") %>
 <body class="cont">
     <h1>Understanding Binary Trees</h1>
     <p>A binary tree is a fundamental data structure in computer science, which consists of nodes connected in a hierarchical manner. Each node can have a maximum of two children, referred to as the left child and the right child. This structure is particularly useful for various applications, including searching, sorting, and implementing other data structures like heaps and binary search trees.</p>
@@ -189,7 +190,7 @@
         <script src="styles/binarytree/editor.js"></script>
     </div>
     <div style="width: 100%;display: flex;justify-content: center;align-items: center;margin: 20px;">
-        <a href="/binarytree">Visualization</a>
+        <a href="/binarytree" class="visual">Visualization</a>
     </div>
 </body>
 </html>

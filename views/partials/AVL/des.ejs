@@ -97,7 +97,7 @@
         }
 
         /* Button Styling */
-        a {
+        .visual {
             background-color: #3498db;
             color: #fff;
             text-decoration: none;
@@ -108,7 +108,7 @@
             transition: background-color 0.3s ease;
         }
 
-        a:hover {
+        .visual:hover {
             background-color: #2980b9;
         }
 
@@ -136,7 +136,8 @@
         }
     </style>
 </head>
-<body>
+<%- include("../navbar.ejs") %>
+<body style="margin-top: 80px;">
 
     <h1>AVL Tree Explanation</h1>
     <p>An AVL tree is a type of self-balancing binary search tree, named after its inventors Georgy Adelson-Velsky and Evgenii Landis, who introduced it in 1962. The primary goal of an AVL tree is to maintain balance, ensuring that the height difference (or balance factor) between the left and right subtrees of any node is at most one. This balancing property allows AVL trees to maintain efficient performance for basic operations such as insertion, deletion, and lookup.</p>
@@ -205,7 +206,7 @@
         <script src="styles/AVL/editor.js"></script>
     </div>
     <div style="width: 100%;display: flex;justify-content: center;align-items: center;margin: 20px;">
-        <a href="/AVL">Visualization</a>
+        <a href="/AVL" class="visual">Visualization</a>
     </div>
 
 </body>

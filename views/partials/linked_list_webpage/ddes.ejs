@@ -97,7 +97,7 @@
         }
 
         /* Button Styling */
-        a {
+        .visual {
             background-color: #3498db;
             color: #fff;
             text-decoration: none;
@@ -108,7 +108,7 @@
             transition: background-color 0.3s ease;
         }
 
-        a:hover {
+        .visual:hover {
             background-color: #2980b9;
         }
 
@@ -134,7 +134,6 @@
                 margin: 10px;
             }
         }
-    </style><style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f7f9fc;
@@ -226,7 +225,7 @@
         }
 
         /* Button Styling */
-        a {
+        .visual {
             background-color: #3498db;
             color: #fff;
             text-decoration: none;
@@ -237,7 +236,7 @@
             transition: background-color 0.3s ease;
         }
 
-        a:hover {
+        .visual:hover {
             background-color: #2980b9;
         }
 
@@ -265,7 +264,8 @@
         }
     </style>
 </head>
-<body>
+<%- include("../navbar.ejs") %>
+<body style="margin-top: 80px;">
 
     <h1>Doubly Linked List</h1>
 
@@ -333,7 +333,7 @@
         <script src="styles/linked_list/js/deditor.js"></script>
     </div>
     <div style="width: 100%;display: flex;justify-content: center;align-items: center;margin: 20px;">
-        <a href="/linkedlist">Visualization</a>
+        <a href="/linkedlist" class="visual">Visualization</a>
     </div>
 </body>
 </html>
