@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked List Visualization</title>
+    <link rel="stylesheet" href="styles/linked_list/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Linked List Visualization</h1>
+        <p>A visualization of singly, doubly, and circular linked lists with operations.</p>
+    </header>
+
+    <main>
+        <!-- Buttons for List Type Switch -->
+        <div id="list-type-buttons">
+            <button id="singly-button" class="active">Singly Linked List</button>
+            <button id="doubly-button">Doubly Linked List</button>
+            <button id="circular-button">Circular Linked List</button>
+        </div>
+
+        <!-- Input Form for Operations -->
+        <div id="operations">
+            <label for="insert-value">Value:</label>
+            <input type="number" id="insert-value" placeholder="Enter value" required>
+            <button id="insert-front">Insert Front</button>
+            <button id="insert-end">Insert End</button>
+            <button id="delete-node">Delete Node</button>
+            <button id="traverse-button">Traverse List</button> <!-- New Traversal Button -->
+        </div>
+
+        <!-- Visualization Canvas -->
+        <div id="visualization">
+            <script src="styles/linked_list/assets/p5.js"></script>
+            <script src="styles/linked_list/js/linked_list.js"></script>
+        </div>
+
+        <!-- Monaco Code Editor -->
+        <div id="code-section">
+            <h2>Code Editor</h2>
+            <div id="editor" style="height: 400px;"></div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs/loader.js"></script>
+            <script src="styles/linked_list/js/editor.js"></script>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,138 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    height: 100%;
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-position: 43%;
+    background-repeat: no-repeat;
+}
+#hlist{
+    text-align: center;
+    color: white;
+    font-size: 3em;
+}
+.header {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    margin: 0px;
+}
+.logo {
+    height: 40px;
+    margin-left: 20px;
+}
+.nav {
+    float: right;
+    margin-right: 20px;
+    padding-top: 10px;
+}
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    
+}
+.listdiv{
+    background-color: rgb(0, 0, 0,0.6);
+    top: 18%;
+    left: 30%;
+    border-radius: 15px;
+    width: 40%;
+    position:absolute;
+    /* top: 100px; */
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.btn {
+    padding: 10px 60px;
+    width: 60%;
+    text-align: center;
+    text-decoration: none;
+    background: #fff;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.popup {
+    width: 400px;
+    height: auto; /* Changed to auto for dynamic height */
+    background: #fff;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 30px; /* Adjusted padding */
+    color: #333;
+    visibility: hidden;
+    transition: all 0.4s ease-in-out;
+}
+
+.open-popup {
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup h2 {
+    font-size: 24px; /* Adjusted font size */
+    font-weight: 500;
+    margin: 20px 0;
+}
+
+.popup button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: auto; /* Adjusted for better appearance */
+    padding: 5px 10px; /* Adjusted padding */
+    background-color: #e02154;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 15px;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+    cursor: pointer; /* Add a pointer cursor */
+}
+
+.popup-links {
+    display: flex; /* Use flexbox for link arrangement */
+    flex-direction: column; /* Arrange links in a column */
+    align-items: center; /* Center align links */
+    margin-top: 20px; /* Space above the links */
+}
+
+.popup a {
+    border: 2px solid rgb(181, 0, 0);
+    padding: 10px; /* Increased padding for better appearance */
+    margin: 5px; /* Smaller margin for compactness */
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 1.3em;
+    color: white;
+    background-color: #e02154;
+    width: 80%; /* Width of the links */
+    text-align: center; /* Center text within links */
+}

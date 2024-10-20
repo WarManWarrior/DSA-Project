@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/linked_list/css/sdes.css">
+    <title>Stack in Data Structures and Algorithms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        ul {
+            margin-bottom: 15px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="cont">
+
+    <h1>Stack in Data Structures and Algorithms (DSA)</h1>
+
+    <p>A stack is a fundamental data structure in computer science, widely used in algorithms and programming for efficient management of data. It follows the <strong>LIFO</strong> (Last In, First Out) principle, meaning that the last element added to the stack is the first one to be removed. This property makes stacks ideal for solving problems where elements need to be processed in reverse order of their insertion.</p>
+
+    <h2>Structure of a Stack</h2>
+    <p>A stack consists of a collection of elements that can be added or removed from only one end, called the <strong>top</strong>. The two primary operations associated with stacks are:</p>
+    <ul>
+        <li><strong>Push</strong>: Adds an element to the top of the stack.</li>
+        <li><strong>Pop</strong>: Removes the topmost element from the stack.</li>
+    </ul>
+
+    <p>Other secondary operations include:</p>
+    <ul>
+        <li><strong>Peek/Top</strong>: Retrieves the top element without removing it.</li>
+        <li><strong>isEmpty</strong>: Checks if the stack is empty.</li>
+        <li><strong>isFull</strong>: Checks if the stack has reached its maximum capacity (only in stacks with predefined size).</li>
+    </ul>
+
+    <h2>Key Characteristics</h2>
+    <ul>
+        <li><strong>LIFO Order</strong>: Elements are accessed in the reverse order of insertion.</li>
+        <li><strong>Limited Access</strong>: Only the top element can be accessed or modified at any time, making it a restricted access data structure.</li>
+        <li><strong>Dynamic Growth</strong>: While stacks can have a fixed size, they can also grow dynamically when implemented using dynamic memory allocation (in languages like C++ or Java).</li>
+    </ul>
+
+    <h2>Real-world Analogies</h2>
+    <ul>
+        <li><strong>Stack of Plates</strong>: Imagine a stack of plates where you can only add or remove a plate from the top. This illustrates the LIFO nature.</li>
+        <li><strong>Undo Function in Software</strong>: When you perform multiple actions, the undo button reverses them in the opposite order, like popping elements off a stack.</li>
+    </ul>
+
+    <h2>Implementation</h2>
+    <p>Stacks can be implemented in various ways, with two common methods:</p>
+    <ol>
+        <li><strong>Array-Based Implementation</strong>: The stack is represented by an array, and the top pointer (index) keeps track of the most recently added element. This method is simple and fast but may lead to overflow (if a fixed-size array is used).</li>
+        <li><strong>Linked List-Based Implementation</strong>: Each element is a node in a linked list, with a pointer to the next node. The head of the list represents the top of the stack. This method is flexible and can grow dynamically without worrying about overflow, but it requires more memory to store pointers.</li>
+    </ol>
+
+    <h2>Time Complexity</h2>
+    <ul>
+        <li><strong>Push</strong>: O(1) (constant time) since we only modify the top of the stack.</li>
+        <li><strong>Pop</strong>: O(1) as it only involves removing the top element.</li>
+        <li><strong>Peek</strong>: O(1) because accessing the top element is straightforward.</li>
+        <li><strong>Space Complexity</strong>: O(n), where n is the number of elements in the stack.</li>
+    </ul>
+
+    <h2>Applications of Stacks</h2>
+    <p>Stacks are highly versatile and used in a wide variety of applications in data structures and algorithms:</p>
+    <ul>
+        <li><strong>Function Call Management (Recursion)</strong>: When a function is called, its state (including variables and return address) is pushed onto the call stack. When the function returns, its state is popped off the stack. This mechanism allows for the management of nested or recursive function calls.</li>
+        <li><strong>Expression Evaluation and Syntax Parsing</strong>: Stacks are used to evaluate mathematical expressions, especially in converting infix expressions (like <code>a + b * c</code>) to postfix (Reverse Polish Notation). They also help in parsing parentheses and brackets in expressions.</li>
+        <li><strong>Backtracking</strong>: In algorithms like depth-first search (DFS), a stack is used to keep track of nodes to be explored. If a path doesn’t lead to a solution, the algorithm backtracks by popping nodes from the stack.</li>
+        <li><strong>Undo Mechanisms</strong>: Text editors and other software applications use stacks to implement undo functionality, where previous states are stored and can be reverted in the opposite order of changes.</li>
+    </ul>
+
+    <h2>Limitations</h2>
+    <ul>
+        <li><strong>Limited Access</strong>: Only the top element can be accessed, which can make some operations inefficient compared to other data structures like queues or arrays.</li>
+        <li><strong>Memory Limit</strong>: In array-based stacks, the size must be defined in advance, and resizing can be expensive in terms of time complexity if it needs to grow beyond its initial capacity.</li>
+    </ul>
+
+    <p>In summary, stacks are a powerful tool in data structures and algorithms, providing efficient solutions for problems involving backtracking, function calls, expression evaluation, and more. Their simple LIFO structure is easy to implement and highly useful in a wide range of applications.</p>
+    <div id="code-section">
+        <h2>Code Editor</h2>
+        <div id="editor" style="height: 400px;"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs/loader.js"></script>
+        <script src="styles/stack/js/editor.js"></script>
+    </div>
+    <div style="width: 100%;display: flex;justify-content: center;align-items: center;margin: 20px;">
+        <a href="/stack">Visualization</a>
+
+</body>
+</html>

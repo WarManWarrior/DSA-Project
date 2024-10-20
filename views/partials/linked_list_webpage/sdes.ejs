@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/linked_list/css/sdes.css">
+    <title>Singaly Linked List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #444;
+        }
+        p {
+            margin: 10px 0;
+        }
+        ul {
+            margin: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <h1>Singly Linked List</h1>
+        <p>A singly linked list is a fundamental data structure widely used in computer science and programming, particularly for managing collections of data. It consists of a sequence of nodes, where each node contains two essential components: the data itself and a reference (or pointer) to the next node in the list. This structure contrasts with arrays, which store data in contiguous memory locations and require a fixed size at the time of declaration.</p>
+        
+        <h2>Structure of a Singly Linked List</h2>
+        <p>Each node in a singly linked list comprises two parts:</p>
+        <ul>
+            <li><strong>Data:</strong> This can be any type of information, such as an integer, string, or even a complex object.</li>
+            <li><strong>Next Pointer:</strong> This is a reference to the next node in the list. If the current node is the last one, this pointer will be <code>null</code> or <code>None</code>, indicating the end of the list.</li>
+        </ul>
+        <p>The first node of the list is referred to as the <strong>head</strong>, and the last node is identified by its next pointer being <code>null</code>. The absence of a backward pointer (as seen in doubly linked lists) makes singly linked lists more memory-efficient but limits traversal options, as one can only move in one direction—from the head to the tail.</p>
+        
+        <h2>Characteristics and Advantages</h2>
+        <p>Singly linked lists offer several advantages:</p>
+        <ul>
+            <li><strong>Dynamic Size:</strong> Unlike arrays, which have a fixed size, linked lists can grow or shrink as needed. This feature makes them particularly useful in situations where the number of elements is unknown at compile time.</li>
+            <li><strong>Efficient Insertions and Deletions:</strong> Adding or removing nodes is straightforward. Inserting a node at the beginning, end, or in the middle of the list only requires updating the relevant pointers, making these operations <code>O(1)</code> when performed at the head. Deleting a node involves changing the next pointer of the previous node to skip the node being removed.</li>
+            <li><strong>Memory Utilization:</strong> Since linked lists do not require contiguous memory allocation, they are less prone to memory wastage. Memory is allocated only when nodes are created, making linked lists more flexible in certain situations.</li>
+        </ul>
+        
+        <h2>Disadvantages</h2>
+        <p>Despite their advantages, singly linked lists have some drawbacks:</p>
+        <ul>
+            <li><strong>Sequential Access:</strong> Unlike arrays, which allow random access to elements using indices, linked lists require sequential traversal. To access the nth element, one must start at the head and follow the pointers, leading to <code>O(n)</code> time complexity for access.</li>
+            <li><strong>Extra Memory for Pointers:</strong> Each node in a linked list requires additional memory for the pointer, which can lead to higher memory usage compared to arrays, particularly for small data types.</li>
+            <li><strong>No Backward Traversal:</strong> The lack of a previous pointer limits navigation options. If a backward traversal is necessary, a doubly linked list or a different structure must be employed.</li>
+        </ul>
+        
+        <h2>Operations on Singly Linked Lists</h2>
+        <p>Several essential operations can be performed on singly linked lists:</p>
+        <ul>
+            <li><strong>Traversal:</strong> Moving through the list to access each element.</li>
+            <li><strong>Insertion:</strong> Adding a node can be done at the beginning, end, or in the middle of the list. Each of these operations involves adjusting the relevant pointers.</li>
+            <li><strong>Deletion:</strong> Removing a node requires adjusting the next pointer of the previous node to bypass the node to be deleted.</li>
+            <li><strong>Searching:</strong> Finding an element in a linked list requires traversal from the head to the desired node, resulting in <code>O(n)</code> time complexity.</li>
+            <li><strong>Reversing:</strong> Changing the direction of the list so that the last node becomes the first is a common operation that requires careful pointer manipulation.</li>
+        </ul>
+        
+        <h2>Applications</h2>
+        <p>Singly linked lists are commonly used in various applications, including:</p>
+        <ul>
+            <li>Implementing stacks and queues.</li>
+            <li>Managing dynamic memory.</li>
+            <li>Representing graphs and adjacency lists.</li>
+            <li>Performing tasks in operating systems, such as process scheduling.</li>
+        </ul>
+        
+        <p>In summary, singly linked lists are a powerful and flexible data structure that provides dynamic memory management and efficient operations for inserting and deleting nodes. While they have some limitations, their advantages make them a valuable tool for many programming scenarios. Understanding how to implement and manipulate singly linked lists is fundamental for any aspiring programmer or computer scientist.</p>
+        <div id="code-section">
+            <h2>Code Editor</h2>
+            <div id="editor" style="height: 400px;"></div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs/loader.js"></script>
+            <script src="styles/linked_list/js/seditor.js"></script>
+        </div>
+        <div style="width: 100%;display: flex;justify-content: center;align-items: center;margin: 20px;">
+            <a href="/linkedlist">Visualization</a>
+        </div>
+    </div>
+
+
+</body>
+</html>

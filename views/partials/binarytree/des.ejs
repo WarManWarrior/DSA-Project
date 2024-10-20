@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/linked_list/css/sdes.css">
+    <title>Understanding Binary Trees</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        p {
+            margin: 10px 0;
+        }
+        ul {
+            margin: 10px 0 10px 20px;
+        }
+    </style>
+</head>
+<body class="cont">
+    <h1>Understanding Binary Trees</h1>
+    <p>A binary tree is a fundamental data structure in computer science, which consists of nodes connected in a hierarchical manner. Each node can have a maximum of two children, referred to as the left child and the right child. This structure is particularly useful for various applications, including searching, sorting, and implementing other data structures like heaps and binary search trees.</p>
+
+    <h2>Structure of a Binary Tree</h2>
+    <p>The binary tree has the following properties:</p>
+    <ul>
+        <li><strong>Node:</strong> Each element in a binary tree is called a node. A node contains data and references to its left and right children.</li>
+        <li><strong>Root:</strong> The topmost node in the binary tree is known as the root. If the tree is empty, it has no root.</li>
+        <li><strong>Leaf Node:</strong> A node that has no children is termed a leaf node.</li>
+        <li><strong>Height:</strong> The height of a binary tree is defined as the number of edges on the longest path from the root to a leaf. The height of an empty tree is -1, and the height of a tree with one node is 0.</li>
+    </ul>
+
+    <h2>Types of Binary Trees</h2>
+    <p>Binary trees can be classified into various types based on their structure and properties:</p>
+    <ul>
+        <li><strong>Full Binary Tree:</strong> In a full binary tree, every node has either 0 or 2 children. This means that no node has only one child.</li>
+        <li><strong>Complete Binary Tree:</strong> A complete binary tree is filled at all levels except possibly the last, which is filled from left to right.</li>
+        <li><strong>Perfect Binary Tree:</strong> A perfect binary tree is a complete binary tree in which all leaf nodes are at the same level, and every non-leaf node has two children.</li>
+        <li><strong>Binary Search Tree (BST):</strong> A binary search tree is a binary tree with the added condition that for any node, the left child must contain a value less than the node’s value, and the right child must contain a value greater than the node’s value. This property allows for efficient searching, insertion, and deletion operations.</li>
+        <li><strong>Balanced Binary Tree:</strong> A balanced binary tree is one in which the height difference between the left and right subtrees of any node is no more than one. This ensures that operations remain efficient.</li>
+    </ul>
+
+    <h2>Operations on Binary Trees</h2>
+    <p>Several common operations can be performed on binary trees:</p>
+    <ul>
+        <li><strong>Insertion:</strong> Adding a new node involves finding the appropriate location based on the properties of the specific binary tree. In a binary search tree, this means traversing the tree according to the node values.</li>
+        <li><strong>Deletion:</strong> Removing a node can be complex, especially if the node has two children. The general approach is to find the node, replace it with its in-order successor (the smallest node in its right subtree), and then delete the in-order successor.</li>
+        <li><strong>Traversal:</strong> Traversing a binary tree means visiting all the nodes in a specific order. The three common types of traversal are:
+            <ul>
+                <li><strong>In-Order Traversal:</strong> Visit the left subtree, the root, and then the right subtree. This results in a sorted order for binary search trees.</li>
+                <li><strong>Pre-Order Traversal:</strong> Visit the root, the left subtree, and then the right subtree. This is useful for creating a copy of the tree.</li>
+                <li><strong>Post-Order Traversal:</strong> Visit the left subtree, the right subtree, and then the root. This is often used for deleting a tree.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Applications of Binary Trees</h2>
+    <p>Binary trees are widely used in various applications:</p>
+    <ul>
+        <li><strong>Searching Algorithms:</strong> Binary search trees allow for efficient searching, with an average time complexity of O(log n).</li>
+        <li><strong>Sorting:</strong> They can be used for sorting data through tree traversal techniques.</li>
+        <li><strong>Expression Parsing:</strong> Binary trees can represent expressions in compilers and interpreters, allowing for easy evaluation of mathematical expressions.</li>
+    </ul>
+
+    <p>In conclusion, binary trees are a versatile and essential data structure, enabling efficient data management and manipulation. Understanding their properties and operations is crucial for software development and algorithm design.</p>
+    <div id="code-section">
+        <h2>Code Editor</h2>
+        <div id="editor" style="height: 400px;"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs/loader.js"></script>
+        <script src="styles/binarytree/editor.js"></script>
+    </div>
+    <div style="width: 100%;display: flex;justify-content: center;align-items: center;margin: 20px;">
+        <a href="/binarytree">Visualization</a>
+    </div>
+</body>
+</html>

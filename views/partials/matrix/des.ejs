@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/linked_list/css/sdes.css">
+    <title>Matrix Multiplication (DSA)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100px;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        .matrix {
+            display: inline-block;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body class="cont">
+
+<h1>Matrix Multiplication (DSA)</h1>
+
+<p>Matrix multiplication is a fundamental operation in computer science and data structures (DSA) with broad applications in graphics, machine learning, and numerical simulations. In this process, two matrices are multiplied to produce a new matrix. Understanding matrix multiplication is crucial, especially when dealing with algorithms that require complex calculations, such as those used in dynamic programming and graph theory.</p>
+
+<h2>Basics of Matrix Multiplication</h2>
+
+<p>Matrix multiplication is only possible under specific conditions. Given two matrices, <strong>A</strong> and <strong>B</strong>:</p>
+
+<ul>
+    <li>Matrix <strong>A</strong> has dimensions <code>m × n</code>, meaning it has <strong>m</strong> rows and <strong>n</strong> columns.</li>
+    <li>Matrix <strong>B</strong> has dimensions <code>n × p</code>, meaning it has <strong>n</strong> rows and <strong>p</strong> columns.</li>
+</ul>
+
+<p>To multiply these two matrices, the number of columns in <strong>A</strong> must equal the number of rows in <strong>B</strong>. The resulting matrix <strong>C</strong> will have dimensions <code>m × p</code>, where each element <code>C[i][j]</code> is computed as the dot product of the <strong>i</strong>-th row of <strong>A</strong> and the <strong>j</strong>-th column of <strong>B</strong>.</p>
+
+<h2>Step-by-Step Process</h2>
+
+<ol>
+    <li><strong>Initialize Resultant Matrix:</strong>  
+        The product of matrix <strong>A</strong> (<code>m × n</code>) and matrix <strong>B</strong> (<code>n × p</code>) yields a new matrix <strong>C</strong> with dimensions <code>m × p</code>.
+    </li>
+    <li><strong>Dot Product Calculation:</strong>  
+        For each element of matrix <strong>C</strong>, denoted as <code>C[i][j]</code>, you calculate the sum of the products of corresponding elements from row <strong>i</strong> of matrix <strong>A</strong> and column <strong>j</strong> of matrix <strong>B</strong>. Formally, this can be expressed as:
+        <pre><code>C[i][j] = ∑(A[i][k] * B[k][j]), for k = 1 to n</code></pre>
+    </li>
+</ol>
+
+<h2>Example</h2>
+
+<p>Let’s consider two matrices:</p>
+
+<div class="matrix">
+    <table>
+        <tr><td>1</td><td>2</td></tr>
+        <tr><td>3</td><td>4</td></tr>
+    </table>
+    <p>Matrix A</p>
+</div>
+
+<div class="matrix">
+    <table>
+        <tr><td>5</td><td>6</td></tr>
+        <tr><td>7</td><td>8</td></tr>
+    </table>
+    <p>Matrix B</p>
+</div>
+
+<p>Multiplying <strong>A</strong> and <strong>B</strong> results in matrix <strong>C</strong>:</p>
+
+<div class="matrix">
+    <table>
+        <tr><td>19</td><td>22</td></tr>
+        <tr><td>43</td><td>50</td></tr>
+    </table>
+    <p>Matrix C</p>
+</div>
+
+<p>The calculations for each element of matrix <strong>C</strong> are as follows:</p>
+<ul>
+    <li><code>C[0][0] = (1 × 5) + (2 × 7) = 5 + 14 = 19</code></li>
+    <li><code>C[0][1] = (1 × 6) + (2 × 8) = 6 + 16 = 22</code></li>
+    <li><code>C[1][0] = (3 × 5) + (4 × 7) = 15 + 28 = 43</code></li>
+    <li><code>C[1][1] = (3 × 6) + (4 × 8) = 18 + 32 = 50</code></li>
+</ul>
+
+<h2>Time Complexity</h2>
+
+<p>Matrix multiplication has a time complexity of <code>O(m × n × p)</code>, where <strong>m</strong>, <strong>n</strong>, and <strong>p</strong> are the dimensions of matrices <strong>A</strong> (<code>m × n</code>) and <strong>B</strong> (<code>n × p</code>). This means that as the size of the matrices increases, the number of operations required for matrix multiplication increases exponentially.</p>
+
+<h2>Strassen’s Algorithm</h2>
+
+<p>In standard matrix multiplication, the computational complexity is <code>O(n³)</code>. However, Strassen’s algorithm offers an optimized approach with a complexity of approximately <code>O(n<sup>2.81</sup>)</code>. Strassen’s method divides each matrix into submatrices and reduces the number of multiplications needed, improving efficiency for large matrices.</p>
+
+<h2>Applications</h2>
+
+<ul>
+    <li><strong>Graph Theory:</strong> Matrix multiplication is often used to solve problems related to graph traversal and finding shortest paths.</li>
+    <li><strong>Dynamic Programming:</strong> Certain dynamic programming algorithms, such as those for solving matrix chain multiplication problems, utilize matrix multiplication.</li>
+    <li><strong>Machine Learning:</strong> Many machine learning models, particularly neural networks, rely heavily on matrix operations for tasks like forward and backward propagation.</li>
+</ul>
+
+<h2>Conclusion</h2>
+
+<p>Matrix multiplication is a foundational concept with broad applications in computer science. While the basic process involves taking the dot product of rows and columns from two matrices, optimizing this operation (e.g., using Strassen’s algorithm) is essential for handling large datasets efficiently.</p>
+<div id="code-section">
+    <h2>Code Editor</h2>
+    <div id="editor" style="height: 400px;"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs/loader.js"></script>
+    <script src="styles/matrixmul/js/editor.js"></script>
+</div>
+<div style="width: 100%;display: flex;justify-content: center;align-items: center;margin: 20px;">
+    <a href="/matrix">Visualization</a>
+
+</body>
+</html>

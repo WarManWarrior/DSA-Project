@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Queue Visualization</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #fbfbfb 0%, #e9e9e9 100%);
+            color: #0066db;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        #canvas-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(2, 134, 250, 0.581);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 20px;
+            margin: 20px 0;
+        }
+        #queueCanvas {
+            border-radius: 10px;
+        }
+        .control-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        button, input {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 8px 12px 0 rgba(2, 134, 250, 0.581);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: rgb(42, 42, 42);
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        input {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        input::placeholder {
+            color: rgba(27, 27, 27, 0.7);
+        }
+        #selected-queue-type {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Advanced Queue Visualization</h1>
+    <div id="selected-queue-type">Basic Queue</div>
+    <div class="control-panel">
+        <button onclick="switchToBasicQueue()">Basic Queue</button>
+        <button onclick="switchToCircularQueue()">Circular Queue</button>
+        <button onclick="switchToDoubleEndedQueue()">Double-Ended Queue</button>
+        <button onclick="switchToPriorityQueue()">Priority Queue</button>
+    </div>
+    <div class="control-panel">
+        <input type="text" id="elementInput" placeholder="Enter value">
+        <input type="number" id="priorityInput" placeholder="Priority" style="display: none;">
+        <button onclick="enqueue()">Enqueue</button>
+        <button onclick="dequeue()">Dequeue</button>
+        <button onclick="front()">Front</button>
+        <button onclick="rear()">Rear</button>
+        <button onclick="clear()">Clear</button>
+    </div>
+    <div id="canvas-container">
+        <canvas id="queueCanvas" width="800" height="400"></canvas>
+    </div>
+
+    <script>
+        let queue = [];
+        let currentQueueType = 'basic';
+        const canvas = document.getElementById("queueCanvas");
+        const ctx = canvas.getContext("2d");
+        const maxSize = 10; // Maximum size for circular queue
+
+        function enqueue() {
+            let element = document.getElementById('elementInput').value;
+            if (element === "") {
+                alert("Please enter a value to enqueue!");
+                return;
+            }
+
+            if (currentQueueType === 'circular' && queue.length >= maxSize) {
+                alert("Circular queue is full!");
+                return;
+            }
+
+            if (currentQueueType === 'priority') {
+                let priority = parseInt(document.getElementById('priorityInput').value);
+                if (isNaN(priority)) {
+                    alert("Please enter a valid priority!");
+                    return;
+                }
+                queue.push({value: element, priority: priority});
+                queue.sort((a, b) => b.priority - a.priority);
+            } else {
+                queue.push(element);
+            }
+
+            document.getElementById('elementInput').value = '';
+            document.getElementById('priorityInput').value = '';
+            visualizeQueue();
+        }
+
+        function dequeue() {
+            if (queue.length === 0) {
+                alert("Queue is empty!");
+                return;
+            }
+
+            if (currentQueueType === 'double-ended') {
+                queue.pop();
+            } else {
+                queue.shift();
+            }
+            visualizeQueue();
+        }
+
+        function front() {
+            if (queue.length === 0) {
+                alert("Queue is empty!");
+                return;
+            }
+            const frontItem = queue[0];
+            const message = currentQueueType === 'priority' 
+                ? `Front element: ${frontItem.value} (Priority: ${frontItem.priority})`
+                : `Front element: ${frontItem}`;
+            alert(message);
+        }
+
+        function rear() {
+            if (queue.length === 0) {
+                alert("Queue is empty!");
+                return;
+            }
+            const rearItem = queue[queue.length - 1];
+            const message = currentQueueType === 'priority' 
+                ? `Rear element: ${rearItem.value} (Priority: ${rearItem.priority})`
+                : `Rear element: ${rearItem}`;
+            alert(message);
+        }
+
+        function clear() {
+            queue = [];
+            visualizeQueue();
+        }
+
+        function switchToBasicQueue() {
+            currentQueueType = 'basic';
+            updateQueueTypeDisplay();
+            visualizeQueue();
+        }
+
+        function switchToCircularQueue() {
+            currentQueueType = 'circular';
+            updateQueueTypeDisplay();
+            visualizeQueue();
+        }
+
+        function switchToDoubleEndedQueue() {
+            currentQueueType = 'double-ended';
+            updateQueueTypeDisplay();
+            visualizeQueue();
+        }
+
+        function switchToPriorityQueue() {
+            currentQueueType = 'priority';
+            updateQueueTypeDisplay();
+            visualizeQueue();
+        }
+
+        function updateQueueTypeDisplay() {
+            const displayElement = document.getElementById('selected-queue-type');
+            displayElement.textContent = getQueueTypeDisplay(currentQueueType);
+            document.getElementById('priorityInput').style.display = currentQueueType === 'priority' ? 'inline-block' : 'none';
+        }
+
+        function getQueueTypeDisplay(type) {
+            switch(type) {
+                case 'basic': return 'Basic Queue';
+                case 'circular': return 'Circular Queue';
+                case 'double-ended': return 'Double-Ended Queue';
+                case 'priority': return 'Priority Queue';
+                default: return 'Queue';
+            }
+        }
+
+        function visualizeQueue() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            switch(currentQueueType) {
+                case 'circular':
+                    visualizeCircularQueue();
+                    break;
+                case 'double-ended':
+                    visualizeDoubleEndedQueue();
+                    break;
+                case 'priority':
+                    visualizePriorityQueue();
+                    break;
+                default:
+                    visualizeBasicQueue();
+            }
+        }
+
+        function visualizeBasicQueue() {
+            const boxWidth = 60;
+            const boxHeight = 40;
+            const startX = 20;
+            const startY = canvas.height / 2 - boxHeight / 2;
+
+            ctx.font = "16px Arial";
+
+            queue.forEach((item, index) => {
+                const x = startX + index * (boxWidth + 10);
+                gsap.to({}, {
+                    duration: 0.5,
+                    onUpdate: () => {
+                        ctx.fillStyle = "#4CAF50";
+                        ctx.fillRect(x, startY, boxWidth, boxHeight);
+                        ctx.strokeStyle = "#ffffff";
+                        ctx.strokeRect(x, startY, boxWidth, boxHeight);
+                        ctx.fillStyle = "#ffffff";
+                        ctx.fillText(item, x + 5, startY + boxHeight / 2 + 5);
+                    },
+                    ease: "power2.out",
+                    delay: index * 0.1
+                });
+            });
+        }
+
+        function visualizeCircularQueue() {
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = 150;
+            const boxSize = 40;
+
+            ctx.font = "16px Arial";
+
+            for (let i = 0; i < maxSize; i++) {
+                const angle = (i / maxSize) * 2 * Math.PI;
+                const x = centerX + radius * Math.cos(angle);
+                const y = centerY + radius * Math.sin(angle);
+
+                gsap.to({}, {
+                    duration: 0.5,
+                    onUpdate: () => {
+                        ctx.fillStyle = i < queue.length ? "#3498db" : "#ecf0f1";
+                        ctx.beginPath();
+                        ctx.arc(x, y, boxSize / 2, 0, 2 * Math.PI);
+                        ctx.fill();
+                        ctx.strokeStyle = "#2c3e50";
+                        ctx.stroke();
+
+                        if (i < queue.length) {
+                            ctx.fillStyle = "#ffffff";
+                            ctx.fillText(queue[i], x - 10, y + 5);
+                        }
+                    },
+                    ease: "power2.out",
+                    delay: i * 0.1
+                });
+            }
+        }
+
+        function visualizeDoubleEndedQueue() {
+            const boxWidth = 60;
+            const boxHeight = 40;
+            const startX = 20;
+            const startY = canvas.height / 2 - boxHeight / 2;
+
+            ctx.font = "16px Arial";
+
+            queue.forEach((item, index) => {
+                const x = startX + index * (boxWidth + 10);
+                gsap.to({}, {
+                    duration: 0.5,
+                    onUpdate: () => {
+                        ctx.fillStyle = index === 0 || index === queue.length - 1 ? "#e74c3c" : "#3498db";
+                        ctx.fillRect(x, startY, boxWidth, boxHeight);
+                        ctx.strokeStyle = "#ffffff";
+                        ctx.strokeRect(x, startY, boxWidth, boxHeight);
+                        ctx.fillStyle = "#ffffff";
+                        ctx.fillText(item, x + 5, startY + boxHeight / 2 + 5);
+                    },
+                    ease: "power2.out",
+                    delay: index * 0.1
+                });
+            });
+        }
+
+        function visualizePriorityQueue() {
+            const boxWidth = 120;
+            const boxHeight = 40;
+            const startX = 20;
+            const startY = 20;
+
+            ctx.font = "14px Arial";
+
+            queue.forEach((item, index) => {
+                const x = startX;
+                const y = startY + index * (boxHeight + 10);
+                gsap.to({}, {
+                    duration: 0.5,
+                    onUpdate: () => {
+                        const hue = 200 + item.priority * 15; // Color based on priority
+                        ctx.fillStyle = `hsl(${hue}, 70%, 50%)`;
+                        ctx.fillRect(x, y, boxWidth, boxHeight);
+                        ctx.strokeStyle = "#ffffff";
+                        ctx.strokeRect(x, y, boxWidth, boxHeight);
+                        ctx.fillStyle = "#ffffff";
+                        ctx.fillText(`${item.value} (${item.priority})`, x + 10, y + boxHeight / 2 + 5);
+                    },
+                    ease: "power2.out",
+                    delay: index * 0.1
+                });
+            });
+        }
+
+        visualizeQueue();
+    </script>
+</body>
+</html>

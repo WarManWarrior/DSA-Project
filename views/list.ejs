@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/hstyle.css">
+    <title>List</title>
+</head>
+
+<body>
+    <header class="header">
+        <img src="styles/logo.png" alt="SRM Logo" class="logo">
+        <nav class="nav">
+            <a href="#introduction">introduction</a>
+            <a href="#objective">objective</a>
+            <a href="#target-audience">target audience</a>
+            <a href="#list-of-experiments">list of experiments</a>
+            <a href="#demo-code">demo code</a>
+            <a href="#practice-code">practice code</a>
+        </nav>
+    </header>
+    <main>
+        <div class="listdiv">
+            <div>
+                <h1 id="hlist">LIST OF EXPERIMENTS</h1>
+            </div>
+            <div class="container">
+                <a class="btn" href="/desAVL">AVL</a>
+            </div>
+            
+            <div class="container">
+                <a class="btn" href="/desbinarytree">Binary Tree</a>
+            </div>
+            
+            <div class="container">
+                <a class="btn" href="/desgraph">Graph</a>
+            </div>
+            
+            <div class="container">
+                <a type="submit" class="btn" onclick="openPopup('popup-linkedlist')">Linked List</a>
+                <div class="popup" id="popup-linkedlist">
+                    <button type="button" onclick="closePopup('popup-linkedlist')">X</button>
+                    <h2>Choose Linked List Type</h2>
+                    <div class="popup-links">
+                        <a href="/slinkedlist">Singly Linked List</a>
+                        <a href="/dlinkedlist">Doubly Linked List</a>
+                        <a href="/clinkedlist">Circular Linked List</a>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="container">
+                <a type="submit" class="btn" onclick="openPopup('popup-matrix')">Matrix Multiplication</a>
+                <div class="popup" id="popup-matrix">
+                    <button type="button" onclick="closePopup('popup-matrix')">X</button>
+                    <h2>Choose Matrix Type</h2>
+                    <div class="popup-links">
+                        <a href="/desmatrix">Using Array</a>
+                        <a href="/desdmatrix">Using Dynamic Memory Allocation</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container">
+                <a class="btn" href="/desqueue">Queue</a>
+            </div>
+            
+            <div class="container">
+                <a class="btn" href="/desstack">Stack</a>
+            </div>            
+        </div>
+    </main>
+    <script src="styles/lindex.js"></script>
+    <script src="../index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/linked_list/css/sdes.css">
+    <title>AVL Tree Explanation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        code {
+            background-color: #e2e2e2;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>AVL Tree Explanation</h1>
+    <p>An AVL tree is a type of self-balancing binary search tree, named after its inventors Georgy Adelson-Velsky and Evgenii Landis, who introduced it in 1962. The primary goal of an AVL tree is to maintain balance, ensuring that the height difference (or balance factor) between the left and right subtrees of any node is at most one. This balancing property allows AVL trees to maintain efficient performance for basic operations such as insertion, deletion, and lookup.</p>
+
+    <h2>Structure and Properties</h2>
+    <ol>
+        <li>
+            <strong>Binary Search Tree (BST) Properties:</strong>
+            <p>Like any binary search tree, AVL trees follow the BST property, where for any given node, all values in the left subtree are less than the node’s value, and all values in the right subtree are greater. This property allows for efficient searching, insertion, and deletion.</p>
+        </li>
+        <li>
+            <strong>Balance Factor:</strong>
+            <p>The balance factor of a node in an AVL tree is defined as the difference between the heights of its left and right subtrees:</p>
+            <code>Balance Factor = Height(left subtree) - Height(right subtree)</code>
+            <p>An AVL tree maintains balance factors of -1, 0, or +1 for every node. A balance factor of 0 indicates that the left and right subtrees are of equal height, while -1 or +1 indicates that one subtree is taller than the other by one level.</p>
+        </li>
+        <li>
+            <strong>Height:</strong>
+            <p>The height of an AVL tree is logarithmic relative to the number of nodes. Specifically, an AVL tree with <code>n</code> nodes has a height of <code>O(log n)</code>. This logarithmic height contributes to the tree's efficient operations.</p>
+        </li>
+    </ol>
+
+    <h2>Rotations</h2>
+    <p>To maintain balance, AVL trees employ rotations. When the insertion or deletion of a node causes a subtree to become unbalanced (i.e., the balance factor exceeds the allowed limits), rotations are performed to restore balance. There are four types of rotations:</p>
+    <ul>
+        <li><strong>Single Right Rotation (LL Rotation):</strong> Used when a node is added to the left subtree of the left child, causing imbalance.</li>
+        <li><strong>Single Left Rotation (RR Rotation):</strong> Used when a node is added to the right subtree of the right child, causing imbalance.</li>
+        <li><strong>Left-Right Rotation (LR Rotation):</strong> Used when a node is added to the right subtree of the left child. This requires a left rotation followed by a right rotation.</li>
+        <li><strong>Right-Left Rotation (RL Rotation):</strong> Used when a node is added to the left subtree of the right child. This requires a right rotation followed by a left rotation.</li>
+    </ul>
+
+    <h2>Operations</h2>
+    <ol>
+        <li>
+            <strong>Insertion:</strong>
+            <p>Inserting a new node involves the standard binary search tree insertion method. After insertion, the tree checks for balance and performs rotations if necessary.</p>
+        </li>
+        <li>
+            <strong>Deletion:</strong>
+            <p>Deleting a node also follows the binary search tree deletion method. After removal, the tree checks for balance and performs rotations to maintain AVL properties.</p>
+        </li>
+        <li>
+            <strong>Searching:</strong>
+            <p>The search operation in an AVL tree is the same as in a regular binary search tree, running in <code>O(log n)</code> time due to the balanced nature of the tree.</p>
+        </li>
+    </ol>
+
+    <h2>Advantages and Disadvantages</h2>
+    <h3>Advantages:</h3>
+    <ul>
+        <li>AVL trees provide faster lookups compared to other self-balancing trees (like Red-Black trees) due to stricter balancing.</li>
+        <li>The height of an AVL tree is always logarithmic, ensuring efficient operations.</li>
+    </ul>
+    <h3>Disadvantages:</h3>
+    <ul>
+        <li>AVL trees require more rotations during insertions and deletions compared to other self-balancing trees.</li>
+        <li>The complexity of maintaining balance may lead to slightly slower insertions and deletions.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>AVL trees are a powerful data structure that effectively balances the need for speed in searching with the need for efficient insertions and deletions. Their self-balancing property makes them particularly useful in applications requiring frequent updates while maintaining rapid access to data.</p>
+    <div id="code-section">
+        <h2>Code Editor</h2>
+        <div id="editor" style="height: 400px;"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs/loader.js"></script>
+        <script src="styles/AVL/editor.js"></script>
+    </div>
+    <div style="width: 100%;display: flex;justify-content: center;align-items: center;margin: 20px;">
+        <a href="/AVL">Visualization</a>
+    </div>
+
+</body>
+</html>

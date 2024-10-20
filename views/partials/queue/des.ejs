@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/linked_list/css/sdes.css">
+    <title>Queue in Data Structures and Algorithms (DSA)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #444;
+            margin-top: 20px;
+        }
+        ul {
+            margin-top: 10px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="cont">
+
+    <h1>Queue in Data Structures and Algorithms (DSA)</h1>
+
+    <p>A <strong>queue</strong> is a linear data structure that follows the <strong>First In First Out (FIFO)</strong> principle. This means that the element inserted first will be the first one to be removed, just like a real-life queue where people line up for a service, and the person at the front of the line is served first.</p>
+
+    <h2>Key Concepts:</h2>
+    <ul>
+        <li><strong>Enqueue:</strong> The operation of adding an element to the queue, done at the rear (or back).</li>
+        <li><strong>Dequeue:</strong> The operation of removing an element from the queue, done at the front.</li>
+        <li><strong>Front:</strong> Refers to the first element in the queue, i.e., the element that will be removed next.</li>
+        <li><strong>Rear:</strong> Refers to the last element in the queue, i.e., the element that was most recently added.</li>
+    </ul>
+
+    <h2>Queue Operations:</h2>
+    <ul>
+        <li><strong>Enqueue(x):</strong> Adds element <code>x</code> to the rear of the queue.</li>
+        <li><strong>Dequeue():</strong> Removes and returns the element at the front of the queue.</li>
+        <li><strong>Peek():</strong> Returns the front element without removing it.</li>
+        <li><strong>IsEmpty():</strong> Returns <code>true</code> if the queue is empty, otherwise <code>false</code>.</li>
+        <li><strong>Size():</strong> Returns the number of elements in the queue.</li>
+    </ul>
+
+    <h2>Types of Queues:</h2>
+
+    <h3>1. Simple Queue (Linear Queue):</h3>
+    <p>This is the most basic form of a queue. Elements are added at the rear and removed from the front. However, a simple queue has a limitation in that once elements are dequeued, the empty space at the front of the queue cannot be reused, leading to inefficiency.</p>
+
+    <h3>2. Circular Queue:</h3>
+    <p>A circular queue treats the array as circular. When the rear reaches the end of the array and there is space at the front (due to dequeuing), the rear can wrap around and use that space, ensuring that the queue can fully utilize the array.</p>
+
+    <h3>3. Priority Queue:</h3>
+    <p>In a priority queue, elements are dequeued based on their priority rather than the order of insertion. The element with the highest priority is dequeued first. If two elements have the same priority, they are dequeued according to their insertion order (FIFO).</p>
+
+    <h3>4. Deque (Double-ended Queue):</h3>
+    <p>A deque allows insertion and deletion at both the front and rear ends of the queue. It can function as both a stack (LIFO) and a queue (FIFO).</p>
+
+    <h2>Applications of Queues:</h2>
+    <ul>
+        <li><strong>CPU Scheduling:</strong> Operating systems use queues to manage tasks. For example, processes in a ready queue are scheduled for CPU time.</li>
+        <li><strong>Breadth-First Search (BFS):</strong> Queue is used in BFS, a graph traversal algorithm, to explore all nodes level by level.</li>
+        <li><strong>Print Spooling:</strong> Printers use a queue to manage multiple print jobs. The job that arrives first gets printed first.</li>
+        <li><strong>Handling Requests in Servers:</strong> Queues are used to manage incoming requests (like HTTP requests to a web server), processing them in the order they arrive.</li>
+    </ul>
+
+    <h2>Queue Implementation:</h2>
+    <ul>
+        <li><strong>Arrays:</strong> A queue can be implemented using arrays, but requires shifting elements during dequeue operations, which can be inefficient.</li>
+        <li><strong>Linked List:</strong> A linked list-based implementation overcomes the need for shifting, allowing constant time enqueue and dequeue operations.</li>
+        <li><strong>Stacks:</strong> A queue can also be implemented using two stacks, where one stack is used for enqueue operations and the other for dequeue operations.</li>
+    </ul>
+
+    <h2>Queue Time Complexities:</h2>
+    <ul>
+        <li><strong>Enqueue:</strong> O(1) in both array and linked list implementations.</li>
+        <li><strong>Dequeue:</strong> O(1) in both array and linked list implementations.</li>
+        <li><strong>Peek:</strong> O(1) to access the front element.</li>
+        <li><strong>IsEmpty:</strong> O(1), as it just checks whether there are any elements in the queue.</li>
+    </ul>
+
+    <h2>Conclusion:</h2>
+    <p>Queues are a fundamental data structure used in numerous applications where order of processing is critical. The different types of queues—simple, circular, priority, and deque—offer flexibility based on the specific requirements of the problem being solved. Whether implemented via arrays, linked lists, or stacks, queues are essential in ensuring efficient management of sequential processes.</p>
+    <div id="code-section">
+        <h2>Code Editor</h2>
+        <div id="editor" style="height: 400px;"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs/loader.js"></script>
+        <script src="styles/queue/editor.js"></script>
+    </div>
+    <div style="width: 100%;display: flex;justify-content: center;align-items: center;margin: 20px;">
+        <a href="/queue">Visualization</a>
+
+</body>
+</html>

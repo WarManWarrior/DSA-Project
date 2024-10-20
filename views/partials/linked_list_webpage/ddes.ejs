@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/linked_list/css/sdes.css">
+    <title>Doubly Linked List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        p {
+            color: #666;
+        }
+        ul {
+            margin: 10px 0;
+        }
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Doubly Linked List</h1>
+
+    <h2>Structure of a Doubly Linked List</h2>
+    <p>A doubly linked list consists of nodes that contain:</p>
+    <ul>
+        <li><strong>Data Field:</strong> Stores the actual data value.</li>
+        <li><strong>Next Pointer:</strong> Points to the next node in the sequence.</li>
+        <li><strong>Previous Pointer:</strong> Points to the previous node in the sequence.</li>
+    </ul>
+    <p>The first node is called the <strong>head</strong>, and the last node is referred to as the <strong>tail</strong>.</p>
+
+    <h2>Advantages of Doubly Linked Lists</h2>
+    <ul>
+        <li><strong>Bidirectional Traversal:</strong> Allows navigation in both directions.</li>
+        <li><strong>Easier Deletion:</strong> Deleting a node is more straightforward.</li>
+        <li><strong>Insertion Flexibility:</strong> Nodes can be inserted at any position easily.</li>
+    </ul>
+
+    <h2>Disadvantages of Doubly Linked Lists</h2>
+    <ul>
+        <li><strong>Increased Memory Usage:</strong> Requires more memory for an additional pointer.</li>
+        <li><strong>Complexity:</strong> Implementation is more complex due to two pointers.</li>
+    </ul>
+
+    <h2>Operations on Doubly Linked Lists</h2>
+    <p>Fundamental operations include:</p>
+    <ul>
+        <li><strong>Insertion:</strong>
+            <ul>
+                <li>At the Beginning</li>
+                <li>At the End</li>
+                <li>At a Specific Position</li>
+            </ul>
+        </li>
+        <li><strong>Deletion:</strong>
+            <ul>
+                <li>From the Beginning</li>
+                <li>From the End</li>
+                <li>From a Specific Position</li>
+            </ul>
+        </li>
+        <li><strong>Traversal:</strong>
+            <ul>
+                <li>Forward traversal from the head</li>
+                <li>Backward traversal from the tail</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Applications of Doubly Linked Lists</h2>
+    <p>Common applications include:</p>
+    <ul>
+        <li><strong>Browser History:</strong> Navigating back and forth between pages.</li>
+        <li><strong>Music Playlist Management:</strong> Skipping to the next or previous track.</li>
+        <li><strong>Implementation of Deques:</strong> Efficient addition and removal of elements from both ends.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Doubly linked lists offer a powerful way to manage data dynamically, providing flexibility and efficiency in various computing tasks.</p>
+    <div id="code-section">
+        <h2>Code Editor</h2>
+        <div id="editor" style="height: 400px;"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs/loader.js"></script>
+        <script src="styles/linked_list/js/deditor.js"></script>
+    </div>
+    <div style="width: 100%;display: flex;justify-content: center;align-items: center;margin: 20px;">
+        <a href="/linkedlist">Visualization</a>
+    </div>
+</body>
+</html>

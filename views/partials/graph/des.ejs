@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/linked_list/css/sdes.css">
+    <title>Understanding Graphs in Data Structures and Algorithms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        p {
+            margin: 10px 0;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body class="cont">
+
+<h1>Understanding Graphs in Data Structures and Algorithms (DSA)</h1>
+
+<p>Graphs are fundamental data structures in computer science and play a crucial role in various applications, from social networks and transportation systems to web page link analysis and recommendation systems. A graph is a collection of nodes (or vertices) and edges that connect pairs of nodes.</p>
+
+<h2>Types of Graphs</h2>
+
+<h3>1. Directed and Undirected Graphs</h3>
+<ul>
+    <li><strong>Directed Graphs (Digraphs)</strong>: The edges have a direction, meaning they connect one vertex to another in a specific direction. For example, in a social network, a directed edge from person A to person B indicates that A follows B, but not necessarily vice versa.</li>
+    <li><strong>Undirected Graphs</strong>: The edges do not have a direction. If there’s an edge between A and B, it implies a two-way connection. An example is a friendship connection where both parties are equally connected.</li>
+</ul>
+
+<h3>2. Weighted and Unweighted Graphs</h3>
+<ul>
+    <li><strong>Weighted Graphs</strong>: Each edge has an associated weight (or cost), which might represent distance, time, or any other metric. This type of graph is essential in shortest path problems, such as finding the quickest route on a map.</li>
+    <li><strong>Unweighted Graphs</strong>: All edges are treated equally, with no associated weights. They are often used in simpler applications like finding connected components.</li>
+</ul>
+
+<h3>3. Cyclic and Acyclic Graphs</h3>
+<ul>
+    <li><strong>Cyclic Graphs</strong>: These contain cycles, meaning there is a path that starts and ends at the same vertex. An example is a transportation network where routes might loop back.</li>
+    <li><strong>Acyclic Graphs</strong>: These do not contain cycles. A notable subtype is the Directed Acyclic Graph (DAG), which is widely used in scheduling tasks and representing dependencies.</li>
+</ul>
+
+<h2>Representation of Graphs</h2>
+
+<p>Graphs can be represented in several ways:</p>
+
+<ul>
+    <li><strong>Adjacency Matrix</strong>: A 2D array where each cell (i, j) indicates the presence (and possibly the weight) of an edge between vertices i and j. This representation is efficient for dense graphs but can waste space for sparse graphs.</li>
+    <li><strong>Adjacency List</strong>: An array of lists, where each index represents a vertex and contains a list of adjacent vertices. This method is space-efficient and is generally preferred for sparse graphs.</li>
+    <li><strong>Edge List</strong>: A collection of edges, where each edge is represented as a pair (or triplet if weighted) of vertices. This representation is straightforward but not as efficient for graph traversal operations.</li>
+</ul>
+
+<h2>Graph Traversal Algorithms</h2>
+
+<p>Two fundamental algorithms for traversing graphs are:</p>
+
+<ul>
+    <li><strong>Depth-First Search (DFS)</strong>: This algorithm explores as far down a branch as possible before backtracking. It can be implemented using recursion or a stack and is useful for searching paths and connected components.</li>
+    <li><strong>Breadth-First Search (BFS)</strong>: This algorithm explores all neighbors at the present depth before moving on to nodes at the next depth level. BFS uses a queue and is essential for finding the shortest path in unweighted graphs.</li>
+</ul>
+
+<h2>Applications of Graphs</h2>
+
+<p>Graphs are ubiquitous in real-world applications:</p>
+
+<ul>
+    <li><strong>Social Networks</strong>: Represent users as nodes and their connections as edges.</li>
+    <li><strong>Web Page Ranking</strong>: Algorithms like Google’s PageRank utilize graphs to determine the importance of web pages based on link structures.</li>
+    <li><strong>Transportation</strong>: Maps and GPS navigation systems model routes and connections as graphs to optimize travel paths.</li>
+</ul>
+
+<h2>Conclusion</h2>
+
+<p>Graphs are a versatile and powerful data structure in computer science. Understanding their properties, representations, and traversal algorithms is crucial for solving a wide range of problems in various fields. Whether through analyzing social networks, optimizing routes, or modeling relationships, graphs offer a robust framework for approaching complex problems efficiently.</p>
+<div id="code-section">
+    <h2>Code Editor</h2>
+    <div id="editor" style="height: 400px;"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs/loader.js"></script>
+    <script src="styles/graph/editor.js"></script>
+</div>
+<div style="width: 100%;display: flex;justify-content: center;align-items: center;margin: 20px;">
+    <a href="/graph">Visualization</a>
+
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h2 class="text-9xl font-bold text-blue-500 text-center mb-8">AVL Tree Visualizer</h2>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e2e2e2;
+            color: #000000;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: #2b2b2b;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group button {
+         margin-right: 10px; /* Add space between buttons */
+        }
+
+
+        input[type="number"] {
+            padding: 10px;
+            width: 250px;
+            margin-right: 10px;
+            border: 2px solid #0095ff;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s ease;
+            background: rgba(51, 0, 255, 0.062);
+            color: #5f3333;
+        }
+
+        input[type="number"]:focus {
+            border-color: #0095ff;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 8px 12px 0 rgba(2, 134, 250, 0.581);
+            background-color: rgba(62, 62, 63, 0.859);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            color:rgba(62, 62, 63, 0.859) ;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        #tree {
+            width: 100%;
+            position: relative;
+            height: 500px;
+            overflow: auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .tree-node {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #0095ff;
+            font-weight: bold;
+            color: #ffffff;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .tree-node:hover {
+            background-color: #0095ff;
+            transform: scale(1.1);
+        }
+
+        .tree-line {
+            position: absolute;
+            height: 2px;
+            background-color: #0095ff;
+            transform-origin: 0 50%;
+        }
+
+        .highlighted {
+            background-color: #ff5722; /* Highlight color */
+        }
+
+        #traversalResult {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            color: #00adb5; /* Text color for results */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>AVL Tree Visualizer</h1>
+        <div class="input-group">
+            <input type="number" id="insertInput" placeholder="Enter a number">
+            <button onclick="insertNode()">Insert</button>
+        </div>
+        <div class="input-group">
+            <button onclick="resetTree()">Reset Tree</button>
+        </div>
+        <div class="input-group">
+            <button onclick="traverseInOrder()">In-Order</button>
+            <button onclick="traversePreOrder()">Pre-Order</button>
+            <button onclick="traversePostOrder()">Post-Order</button>
+        </div>
+        <div id="tree"></div>
+        <div id="traversalResult"></div>
+    </div>
+
+    <script>
+        class TreeNode {
+            constructor(value) {
+                this.value = value;
+                this.left = null;
+                this.right = null;
+                this.height = 1;
+            }
+        }
+
+        class AVLTree {
+            constructor() {
+                this.root = null;
+            }
+
+            height(node) {
+                return node ? node.height : 0;
+            }
+
+            updateHeight(node) {
+                node.height = 1 + Math.max(this.height(node.left), this.height(node.right));
+            }
+
+            balanceFactor(node) {
+                return this.height(node.left) - this.height(node.right);
+            }
+
+            rotateRight(y) {
+                let x = y.left;
+                let T2 = x.right;
+
+                x.right = y;
+                y.left = T2;
+
+                this.updateHeight(y);
+                this.updateHeight(x);
+
+                return x;
+            }
+
+            rotateLeft(x) {
+                let y = x.right;
+                let T2 = y.left;
+
+                y.left = x;
+                x.right = T2;
+
+                this.updateHeight(x);
+                this.updateHeight(y);
+
+                return y;
+            }
+
+            insert(value) {
+                this.root = this._insertRecursive(this.root, value);
+            }
+
+            _insertRecursive(node, value) {
+                if (!node) return new TreeNode(value);
+
+                if (value < node.value) {
+                    node.left = this._insertRecursive(node.left, value);
+                } else if (value > node.value) {
+                    node.right = this._insertRecursive(node.right, value);
+                } else {
+                    return node;
+                }
+
+                this.updateHeight(node);
+
+                let balance = this.balanceFactor(node);
+
+                // Left Left Case
+                if (balance > 1 && value < node.left.value) {
+                    return this.rotateRight(node);
+                }
+
+                // Right Right Case
+                if (balance < -1 && value > node.right.value) {
+                    return this.rotateLeft(node);
+                }
+
+                // Left Right Case
+                if (balance > 1 && value > node.left.value) {
+                    node.left = this.rotateLeft(node.left);
+                    return this.rotateRight(node);
+                }
+
+                // Right Left Case
+                if (balance < -1 && value < node.right.value) {
+                    node.right = this.rotateRight(node.right);
+                    return this.rotateLeft(node);
+                }
+
+                return node;
+            }
+
+            inOrderTraversal(callback) {
+                return this._inOrderRecursive(this.root, callback);
+            }
+
+            async _inOrderRecursive(node, callback) {
+                if (node !== null) {
+                    await this._inOrderRecursive(node.left, callback);
+                    await callback(node);
+                    await this._inOrderRecursive(node.right, callback);
+                }
+            }
+
+            preOrderTraversal(callback) {
+                return this._preOrderRecursive(this.root, callback);
+            }
+
+            async _preOrderRecursive(node, callback) {
+                if (node !== null) {
+                    await callback(node);
+                    await this._preOrderRecursive(node.left, callback);
+                    await this._preOrderRecursive(node.right, callback);
+                }
+            }
+
+            postOrderTraversal(callback) {
+                return this._postOrderRecursive(this.root, callback);
+            }
+
+            async _postOrderRecursive(node, callback) {
+                if (node !== null) {
+                    await this._postOrderRecursive(node.left, callback);
+                    await this._postOrderRecursive(node.right, callback);
+                    await callback(node);
+                }
+            }
+        }
+
+        const tree = new AVLTree();
+        const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+        function insertNode() {
+            const value = parseInt(document.getElementById('insertInput').value);
+            if (!isNaN(value)) {
+                tree.insert(value);
+                visualizeTree();
+                document.getElementById('insertInput').value = '';
+            }
+        }
+
+        function resetTree() {
+            tree.root = null;
+            visualizeTree();
+            document.getElementById('traversalResult').textContent = '';
+        }
+
+        async function traverseInOrder() {
+            const result = [];
+            await tree.inOrderTraversal(async (node) => {
+                result.push(node.value);
+                highlightNode(node.value);
+                await delay(1000);
+                unhighlightNode(node.value);
+            });
+            document.getElementById('traversalResult').textContent = `In-Order Traversal: ${result.join(' -> ')}`;
+        }
+
+        async function traversePreOrder() {
+            const result = [];
+            await tree.preOrderTraversal(async (node) => {
+                result.push(node.value);
+                highlightNode(node.value);
+                await delay(1000);
+                unhighlightNode(node.value);
+            });
+            document.getElementById('traversalResult').textContent = `Pre-Order Traversal: ${result.join(' -> ')}`;
+        }
+
+        async function traversePostOrder() {
+            const result = [];
+            await tree.postOrderTraversal(async (node) => {
+                result.push(node.value);
+                highlightNode(node.value);
+                await delay(1000);
+                unhighlightNode(node.value);
+            });
+            document.getElementById('traversalResult').textContent = `Post-Order Traversal: ${result.join(' -> ')}`;
+        }
+
+        function visualizeTree() {
+            const treeDiv = document.getElementById('tree');
+            treeDiv.innerHTML = '';
+            if (tree.root) {
+                const treeHeight = getTreeHeight(tree.root);
+                const treeWidth = Math.pow(2, treeHeight) * 60;
+                treeDiv.style.width = `${treeWidth}px`;
+                drawTree(tree.root, treeWidth / 2, 30, treeWidth / 4);
+            }
+        }
+
+        function getTreeHeight(node) {
+            if (!node) return 0;
+            return 1 + Math.max(getTreeHeight(node.left), getTreeHeight(node.right));
+        }
+
+        function drawTree(node, x, y, hSpacing) {
+            if (!node) return;
+
+            const nodeElem = document.createElement('div');
+            nodeElem.className = 'tree-node';
+            nodeElem.id = `node-${node.value}`;
+            nodeElem.style.left = `${x - 30}px`;
+            nodeElem.style.top = `${y - 30}px`;
+            nodeElem.textContent = node.value;
+            document.getElementById('tree').appendChild(nodeElem);
+
+            if (node.left) {
+                drawLine(x, y, x - hSpacing, y + 80);
+                drawTree(node.left, x - hSpacing, y + 80, hSpacing / 2);
+            }
+            if (node.right) {
+                drawLine(x, y, x + hSpacing, y + 80);
+                drawTree(node.right, x + hSpacing, y + 80, hSpacing / 2);
+            }
+        }
+
+        function drawLine(x1, y1, x2, y2) {
+            const line = document.createElement('div');
+            line.className = 'tree-line';
+            const length = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+            const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+            
+            line.style.width = `${length}px`;
+            line.style.left = `${x1}px`;
+            line.style.top = `${y1}px`;
+            line.style.transform = `rotate(${angle}deg)`;
+
+            document.getElementById('tree').appendChild(line);
+        }
+
+        function highlightNode(value) {
+            const node = document.getElementById(`node-${value}`);
+            if (node) node.classList.add('highlighted');
+        }
+
+        function unhighlightNode(value) {
+            const node = document.getElementById(`node-${value}`);
+            if (node) node.classList.remove('highlighted');
+        }
+
+        visualizeTree();
+    </script>
+</body>
+
+</html>

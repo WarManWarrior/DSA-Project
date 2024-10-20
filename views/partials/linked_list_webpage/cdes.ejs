@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/linked_list/css/sdes.css">
+    <title>Circular Linked List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        p {
+            margin: 10px 0;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Circular Linked List</h1>
+    <p>A <strong>circular linked list</strong> is a data structure that extends the concept of a linked list by linking the last node back to the first node, forming a circle. Unlike traditional linked lists, which have a <code>null</code> reference at the end, a circular linked list does not have an end point, making it useful for applications that require continuous traversal of the list without the need for resetting to the head. This structure is commonly used in various computing scenarios, including round-robin scheduling, buffering, and game development.</p>
+
+    <h2>Structure of Circular Linked List</h2>
+    <p>A circular linked list consists of nodes, where each node contains two components:</p>
+    <ul>
+        <li><strong>Data</strong>: This holds the value or information the node is meant to store.</li>
+        <li><strong>Pointer (or Link)</strong>: This points to the next node in the list. In a circular linked list, the pointer of the last node points back to the first node.</li>
+    </ul>
+    <p>There are two primary types of circular linked lists:</p>
+    <ul>
+        <li><strong>Circular Singly Linked List</strong>: Each node points to the next node, and the last node points back to the first. Traversal can only occur in one direction (forward).</li>
+        <li><strong>Circular Doubly Linked List</strong>: Each node has two pointers: one pointing to the next node and the other pointing to the previous node. This allows traversal in both directions (forward and backward).</li>
+    </ul>
+
+    <h2>Advantages of Circular Linked Lists</h2>
+    <ul>
+        <li><strong>No Null Pointers</strong>: Unlike traditional linked lists, there are no null references, which simplifies the implementation of certain algorithms that rely on continuous traversal.</li>
+        <li><strong>Efficient Memory Utilization</strong>: In situations where the number of elements is variable, circular linked lists allow for efficient memory usage since they can expand and contract dynamically without the need for resizing or reallocating memory.</li>
+        <li><strong>Easier Implementation of Certain Algorithms</strong>: Algorithms that require circularity, like round-robin scheduling, are more straightforward with circular linked lists.</li>
+        <li><strong>Infinite Looping</strong>: Circular linked lists can be traversed indefinitely, which can be beneficial in applications like video streaming and gaming where continuous cycles are necessary.</li>
+    </ul>
+
+    <h2>Disadvantages of Circular Linked Lists</h2>
+    <ul>
+        <li><strong>Complexity</strong>: Implementing a circular linked list can be more complex than a traditional linked list, particularly when it comes to inserting or deleting nodes, as care must be taken to maintain the circular nature of the list.</li>
+        <li><strong>Difficulty in Finding the End</strong>: Since there is no null pointer to signify the end of the list, algorithms that traverse the list must have a predefined stopping condition to avoid infinite loops.</li>
+    </ul>
+
+    <h2>Basic Operations</h2>
+    <ul>
+        <li><strong>Insertion</strong>: To insert a new node, you need to adjust the pointers of the new node and the existing nodes. For example, to insert at the beginning, point the new node to the current head and adjust the last node’s pointer to point to the new node.</li>
+        <li><strong>Deletion</strong>: To delete a node, you must find the node preceding the one to be deleted and adjust its pointer to skip the deleted node, thereby maintaining the circular structure.</li>
+        <li><strong>Traversal</strong>: Starting from any node, you can traverse the entire list by following the next pointers until you return to the starting node.</li>
+    </ul>
+
+    <h2>Applications</h2>
+    <p>Circular linked lists are widely used in various applications, such as:</p>
+    <ul>
+        <li><strong>Round-robin scheduling</strong> in operating systems for task management.</li>
+        <li><strong>Multiplayer gaming</strong> for managing players in a circular fashion.</li>
+        <li><strong>Buffering</strong> in streaming applications, allowing for continuous data flow.</li>
+    </ul>
+
+    <p>In summary, circular linked lists are a versatile and efficient data structure suitable for specific applications that benefit from their circular nature, enabling continuous traversal and dynamic memory usage. While they offer advantages in certain contexts, the complexity of their implementation must be managed carefully.</p>
+    <div id="code-section">
+        <h2>Code Editor</h2>
+        <div id="editor" style="height: 400px;"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs/loader.js"></script>
+        <script src="styles/linked_list/js/ceditor.js"></script>
+    </div>
+    <div style="width: 100%;display: flex;justify-content: center;align-items: center;margin: 20px;">
+        <a href="/linkedlist">Visualization</a>
+    </div>
+</body>
+</html>

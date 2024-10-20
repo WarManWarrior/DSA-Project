@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRM Institute of Science and Technology</title>
+    <style>
+        body, html {
+            background-image: url("styles/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position:43%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+        }
+        .header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            height: 40px;
+            margin-left: 20px;
+        }
+        .nav {
+            float: right;
+            margin-right: 20px;
+            padding-top: 10px;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            
+        }
+        .hero {
+            background-image: url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-content {
+            text-align: center;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 10px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffd700;
+            color: black;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="styles/logo.png" alt="SRM Logo" class="logo">
+        <nav class="nav">
+            <a href="#introduction">introduction</a>
+            <a href="#objective">objective</a>
+            <a href="#target-audience">target audience</a>
+            <a href="#list-of-experiments">list of experiments</a>
+            <a href="#demo-code">demo code</a>
+            <a href="#practice-code">practice code</a>
+        </nav>
+    </header>
+    
+    <main class="hero">
+        <div class="hero-content">
+            <h1>SRM INSTITUTE OF SCIENCE AND TECHNOLOGY</h1>
+            <p>DEPARTMENT OF COMPUTATIONAL INTELLIGENCE</p>
+            <p>School of Computing,<br>College of Engineering and Technology</p>
+            <p>DESIGN AND ANALYSIS OF ALGORITHMS VIRTUAL LAB</p>
+            <a href="#introduction" class="btn">Introduction</a>
+            <a href="/list" class="btn">List of Experiments</a>
+        </div>
+    </main>
+</body>
+</html>

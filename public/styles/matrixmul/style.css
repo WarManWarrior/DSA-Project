@@ -1,0 +1,22 @@
+#controls {
+    margin-bottom: 20px;
+}
+
+#matrix-inputs {
+    margin-top: 10px;
+}
+
+input {
+    margin: 5px;
+}
+
+#visualization {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    /* height: 100vh; */
+}
+canvas {
+    border-radius: 20px; /* Set the radius of the rounded corners */
+}
