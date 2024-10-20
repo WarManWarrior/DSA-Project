@@ -49,45 +49,50 @@ const ctx = canvas.getContext('2d');
 canvas.width = 800;
 canvas.height = 600;
 
-function drawNode(node, x, y, level) {
+function drawNode(node, x, y, level, highlight = false) {
     if (node === null) return;
 
     const nodeRadius = 20;
     const horizontalSpacing = 100 / level;
     const verticalSpacing = 80;
 
+    // Draw edges first
+    if (node.left !== null) {
+        const leftChildX = x - horizontalSpacing;
+        const leftChildY = y + verticalSpacing;
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(leftChildX, leftChildY);
+        ctx.stroke();
+        drawNode(node.left, leftChildX, leftChildY, level + 1);
+    }
+
+    if (node.right !== null) {
+        const rightChildX = x + horizontalSpacing;
+        const rightChildY = y + verticalSpacing;
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(rightChildX, rightChildY);
+        ctx.stroke();
+        drawNode(node.right, rightChildX, rightChildY, level + 1);
+    }
+
     // Draw current node
-    ctx.fillStyle = "#0084ff";
+    ctx.fillStyle = highlight ? "#ff6b6b" : "#0084ff";
     ctx.beginPath();
     ctx.arc(x, y, nodeRadius, 0, Math.PI * 2);
     ctx.fill();
     ctx.closePath();
 
     // Draw node value
-    ctx.fillStyle = "#000";
+    ctx.fillStyle = "#ffffff";
     ctx.font = "16px Arial";
     ctx.textAlign = "center";
     ctx.fillText(node.value, x, y + 5);
-
-    // Draw left child
-    if (node.left !== null) {
-        ctx.strokeStyle = "#ffffff";
-        ctx.beginPath();
-        ctx.moveTo(x, y + nodeRadius);
-        ctx.lineTo(x - horizontalSpacing, y + verticalSpacing);
-        ctx.stroke();
-        drawNode(node.left, x - horizontalSpacing, y + verticalSpacing, level + 1);
-    }
-
-    // Draw right child
-    if (node.right !== null) {
-        ctx.strokeStyle = "#ffffff";
-        ctx.beginPath();
-        ctx.moveTo(x, y + nodeRadius);
-        ctx.lineTo(x + horizontalSpacing, y + verticalSpacing);
-        ctx.stroke();
-        drawNode(node.right, x + horizontalSpacing, y + verticalSpacing, level + 1);
-    }
 }
 
 function drawTree() {
@@ -105,8 +110,44 @@ function insertNode() {
 
 function resetTree() {
     tree.reset();
+    createDefaultTree();
     drawTree();
 }
 
-// Initial tree drawing
+function createDefaultTree() {
+    [10, 5, 15, 3, 7, 12, 18].forEach(value => tree.insert(value));
+}
+
+async function highlightNode(node, x, y, level) {
+    drawNode(node, x, y, level, true);
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    drawNode(node, x, y, level, false);
+}
+
+async function traversePreOrder(node = tree.root, x = canvas.width / 2, y = 50, level = 1) {
+    if (node !== null) {
+        await highlightNode(node, x, y, level);
+        await traversePreOrder(node.left, x - 100 / level, y + 80, level + 1);
+        await traversePreOrder(node.right, x + 100 / level, y + 80, level + 1);
+    }
+}
+
+async function traverseInOrder(node = tree.root, x = canvas.width / 2, y = 50, level = 1) {
+    if (node !== null) {
+        await traverseInOrder(node.left, x - 100 / level, y + 80, level + 1);
+        await highlightNode(node, x, y, level);
+        await traverseInOrder(node.right, x + 100 / level, y + 80, level + 1);
+    }
+}
+
+async function traversePostOrder(node = tree.root, x = canvas.width / 2, y = 50, level = 1) {
+    if (node !== null) {
+        await traversePostOrder(node.left, x - 100 / level, y + 80, level + 1);
+        await traversePostOrder(node.right, x + 100 / level, y + 80, level + 1);
+        await highlightNode(node, x, y, level);
+    }
+}
+
+// Create default tree and draw it
+createDefaultTree();
 drawTree();

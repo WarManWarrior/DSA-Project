@@ -131,3 +131,11 @@ footer {
     text-align: center;
     color: #6c757d;
 }
+#operations input[type="number"] {
+    width: 100px; /* Adjust width for position input */
+    margin-right: 10px;
+}
+.highlight {
+    background-color: green !important;
+    box-shadow: 0 0 10px 2px white !important;
+}

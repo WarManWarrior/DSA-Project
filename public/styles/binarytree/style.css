@@ -1,22 +1,27 @@
 /* General styles for dark theme */
 body {
-    background-color: #d4d4d4;
+    background-color: #121212;
     color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
 }
 
 /* Header styles */
 header {
-    background-color: #c2c2c2;
+    background-color: #1e1e1e;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     padding: 20px;
+    width: 100%;
 }
 
 h1 {
-    color: #005fb8;
+    color: #0084ff;
     font-size: 2rem;
     letter-spacing: 1px;
     margin: 0;
@@ -38,6 +43,7 @@ h1 {
     display: flex;
     justify-content: center;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 input, button {
@@ -50,8 +56,8 @@ input, button {
 }
 
 input {
-    background-color: #e2e2e2;
-    color: #0084ff;
+    background-color: #2a2a2a;
+    color: #ffffff;
     border: 1px solid #0084ff;
     width: 180px;
     text-align: center;
@@ -63,14 +69,14 @@ input:focus {
 
 button {
     background-color: #0084ff;
-    color: #121212;
+    color: #ffffff;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-weight: bold;
 }
 
 button:hover {
-    background-color: #0084ff;
+    background-color: #0066cc;
     transform: translateY(-2px);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
@@ -78,15 +84,18 @@ button:hover {
 /* Tree visualization container */
 #treeContainer {
     margin-top: 40px;
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }
 
 canvas {
-    background-color: #d8d8d8;
+    background-color: #2a2a2a;
     display: block;
     margin: 0 auto;
     border-radius: 10px;
-    border: 2px solid#0084ff;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    border: 2px solid #0084ff;
 }
 
 /* Button styling for reset and insert */

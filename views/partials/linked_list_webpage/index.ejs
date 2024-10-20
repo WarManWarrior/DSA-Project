@@ -21,14 +21,26 @@
         </div>
 
         <!-- Input Form for Operations -->
+        <!-- Input Form for Operations -->
         <div id="operations">
             <label for="insert-value">Value:</label>
             <input type="number" id="insert-value" placeholder="Enter value" required>
+            <label for="insert-position">Position:</label>
+            <input type="number" id="insert-position" placeholder="Enter position" min="0" required>
             <button id="insert-front">Insert Front</button>
             <button id="insert-end">Insert End</button>
-            <button id="delete-node">Delete Node</button>
-            <button id="traverse-button">Traverse List</button> <!-- New Traversal Button -->
+            <button id="insert-position-btn">Insert at Position</button>
+            <button id="delete-node">Delete Last Node</button>
+            <button id="delete-first">Delete First Node</button>
+            <button id="delete-position-btn">Delete at Position</button>
+            <!-- <button id="traverse-button">Traverse List</button> -->
+            <br><br>
+            <label for="search-value">Search Value:</label>
+            <input type="number" id="search-value" placeholder="Enter value to search" required>
+            <button id="search-node">Search Node</button> <!-- New Search Button -->
         </div>
+        
+
 
         <!-- Visualization Canvas -->
         <div id="visualization">

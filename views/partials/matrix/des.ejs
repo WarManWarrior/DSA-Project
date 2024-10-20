@@ -7,33 +7,132 @@
     <title>Matrix Multiplication (DSA)</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-        }
-        h1, h2 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f9fc;
             color: #333;
+            margin: 20px;
+            line-height: 1.8;
         }
+
+        h1, h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        p, ul, li {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
         code {
-            background-color: #f4f4f4;
-            padding: 2px 6px;
-            border-radius: 3px;
+            background-color: #e7f3ff;
+            color: #2c3e50;
+            padding: 3px 7px;
+            border-radius: 5px;
         }
+
         table {
             border-collapse: collapse;
             width: 100px;
             margin-bottom: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         table, th, td {
-            border: 1px solid black;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
         }
+
         th, td {
             padding: 10px;
             text-align: center;
+            background-color: #fff;
         }
+
         .matrix {
             display: inline-block;
-            margin-right: 20px;
+            margin-right: 40px;
+            text-align: center;
+        }
+
+        .matrix p {
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        h2 {
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        ol {
+            padding-left: 20px;
+        }
+
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        /* Code Section */
+        #code-section {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        #code-section h2 {
+            color: #2980b9;
+        }
+
+        /* Button Styling */
+        a {
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #2980b9;
+        }
+
+        /* Monaco editor style */
+        #editor {
+            border: 1px solid #bdc3c7;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .matrix {
+                margin-bottom: 20px;
+                display: block;
+            }
+
+            table {
+                margin: 0 auto;
+            }
+
+            body {
+                margin: 10px;
+            }
         }
     </style>
 </head>
@@ -123,14 +222,17 @@
 <h2>Conclusion</h2>
 
 <p>Matrix multiplication is a foundational concept with broad applications in computer science. While the basic process involves taking the dot product of rows and columns from two matrices, optimizing this operation (e.g., using Strassen’s algorithm) is essential for handling large datasets efficiently.</p>
+
 <div id="code-section">
     <h2>Code Editor</h2>
     <div id="editor" style="height: 400px;"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs/loader.js"></script>
     <script src="styles/matrixmul/js/editor.js"></script>
 </div>
+
 <div style="width: 100%;display: flex;justify-content: center;align-items: center;margin: 20px;">
     <a href="/matrix">Visualization</a>
+</div>
 
 </body>
 </html>
